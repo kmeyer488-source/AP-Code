@@ -50,8 +50,6 @@ C: Core
             create(wtype)
         elif actch == 'D':
             display()
-        elif actch == 'P':
-            plan()
         elif actch == 'Q':
             break
 
