@@ -24,7 +24,7 @@ corel=["Planks", "Dead Bugs", "Bird Dogs", "Russian Twists", "Leg Raises", "Glut
 workopts=["Light Cardio", "Upper Body", "Lower Body", "Full Body", "Cardio Intervals", "Light Cardio+Core", "Upper Body+Core", "Lower Body+Core", "Full Body+Core", "Cardio Intervals+Core"]
 weekdays=["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 workweek={
-#dledk
+
 
 }
 
