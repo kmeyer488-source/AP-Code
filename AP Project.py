@@ -21,15 +21,6 @@ totall=[upperl,lowerl]
 corel=["Planks", "Dead Bugs", "Bird Dogs", "Russian Twists", "Leg Raises", "Glute Bridges", "Bicycle Crunches", "Cherry Pickers"]
 
 
-workopts=["Light Cardio", "Upper Body", "Lower Body", "Full Body", "Cardio Intervals", "Light Cardio+Core", "Upper Body+Core", "Lower Body+Core", "Full Body+Core", "Cardio Intervals+Core"]
-weekdays=["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-workweek={
-
-
-}
-
-
-dw=[]
 workouts={
 
 
@@ -98,18 +89,6 @@ def display():
         for k in j:
             print(f"{k}")
         print()
-def plan():
-    for i in weekdays:
-        ans= input(f"do you want to work out on {i}? (Y/N)").strip().upper()
-        if ans == "Y":
-                workweek[i]=random.choice(workopts)
-        else:
-                workweek[i]='Rest'
-    print()
-    print("Displaying Weekly Plan:")
-    for i, j in workweek.items():
-        print(f"{i}: {j}")
-    print()
 
 def core(time, reps):
     work=[]
@@ -180,21 +159,3 @@ def total (reps,num):
         print(i)
     return work      
 main()
-
-
-def upper():
-        work = [random.choice(chest), random.choice(back), random.choice(shoulders), random.choice(arms)]
-        print ("Here is your upper body workout:")
-        for i in work:
-            print(i)
-        '''
-        if wreps == 'S':
-            print("Custom Workout:")
-            for i in work:
-                print(i, "4-8 Reps")
-            print("Repeat 3X")
-        elif wreps == 'E':
-            for i in work:
-                print(i, "8-12+ Reps")
-            print("Repeat 3X")
-'''
