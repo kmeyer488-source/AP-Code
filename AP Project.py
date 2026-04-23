@@ -31,20 +31,25 @@ workouts={
 def main():
     done = False
     while not done:
-        actch=input("""Welcome to Workout Generator!
+        actch=input("""
+                    
+    Welcome to Workout Generator!
     In Workout Generator, you can:
 C: Create a daily workout
 D: Display your saved daily workouts                       
 Q: Quit
-Which would you like to do?                                        
+Which would you like to do?
+                                                            
                       """).strip().upper()
         if actch=='C':
             wtype=input("""
+                        
     What muscle group are you targeting?
 U: Upper
 L: Lower
 T: Total Body
-C: Core                   
+C: Core        
+                                   
                     """).strip().upper()
             create(wtype)
         elif actch == 'D':
@@ -56,19 +61,27 @@ def create(wtype):
     if wtype == 'U':
             reps=input("Would you like to do a strength workout (S) or an endurance workout (E)?").strip().upper()
             num=int(input("How many exercises would you like to do? (Typically 4-8)"))
+            #start AI
             work = upper(reps,num)
+            #end AI
     elif wtype == 'L':
             reps=input("Would you like to do a strength workout (S) or an endurance workout (E)?").strip().upper()
             num=int(input("How many exercises would you like to do? (Typically 4-8)"))
+            #start AI
             work = lower(reps,num)
+            #end AI
     elif wtype == 'T':
             reps=input("Would you like to do a strength workout (S) or an endurance workout (E)?").strip().upper()
             num=int(input("How many exercises would you like to do? (Typically 4-8)"))
+            #start AI
             work = total(reps,num)
+            #end AI
     elif wtype == 'C':
             time=int(input("How long do you want your core workout to be? (Typically 5, 10, or 15): "))
             reps=int(input("How many exercises would you like to do? Typically 4-8.)"))
+            #start AI
             work = core(time, reps)
+            #end AI
     else:
             print("Invalid input. Please try again.")
     save= input ("Would you like to save your workout? (Y/N)").upper().strip()
@@ -76,7 +89,7 @@ def create(wtype):
             name= input("What would you like to name this workout?")
             workouts [name]=work
     else:
-            print()
+            print("Workout not saved.")
             
 def display():
     print("Displaying Workouts:")
@@ -107,12 +120,12 @@ def core(time, reps):
 
 def upper(reps, num):
     work=[]
-        # start AI
+    #start AI
     while len(work)<num:
         choice=(random.choice(random.choice(upperl)))
         while choice not in work:
             work.append(choice)
-        #end AI
+    #end AI
     if  reps=='E':
          work.append("Repeat each exercise 8-12 times per round")
     elif reps=='S':
