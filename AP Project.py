@@ -34,8 +34,7 @@ def main():
         actch=input("""Welcome to Workout Generator!
     In Workout Generator, you can:
 C: Create a daily workout
-D: Display your saved daily workouts
-P: Create a weekly workout plan based on what days you want to work out                         
+D: Display your saved daily workouts                       
 Q: Quit
 Which would you like to do?                                        
                       """).strip().upper()
@@ -80,20 +79,23 @@ def create(wtype):
             print()
             
 def display():
-   
+    print("Displaying Workouts:")
+    print()
+   #start AI
     for i, j in workouts.items():
-        print("Displaying Workouts:")
         print(f"{i}:")
         for k in j:
             print(f"{k}")
         print()
-
+    #end AI
 def core(time, reps):
     work=[]
     num=int(time/reps*2)
     for i in range (reps):
         work.append(random.choice(corel))
+    #start AI
     work.append(f"Repeat all exercises for 30 seconds {num} time(s)")
+    #end AI
     if num>1:
         work.append("Rest for 30 seconds between each round")
     else:
@@ -105,12 +107,13 @@ def core(time, reps):
 
 def upper(reps, num):
     work=[]
-    for i in range (num) :
-        #AI
-        choice=(random.choice(random.choice(lowerl)))
-        while choice in work:
+        # start AI
+    while len(work)<num:
+        choice=(random.choice(random.choice(upperl)))
+        while choice not in work:
             work.append(choice)
-    if reps=='E':
+        #end AI
+    if  reps=='E':
          work.append("Repeat each exercise 8-12 times per round")
     elif reps=='S':
          work.append("Repeat each exercise 4-8 times per round")
@@ -123,11 +126,12 @@ def upper(reps, num):
 
 def lower(reps,num):
     work=[]
-    #AI
+    #start AI
     while len(work) < num:
         choice = random.choice(random.choice(lowerl))
         if choice not in work:
             work.append(choice)
+    #end AI
     if reps=='E':
          work.append("Repeat each exercise 8-12 times per round")
     elif reps=='S':
@@ -141,11 +145,12 @@ def lower(reps,num):
 
 def total (reps,num):
     work=[]
-    for i in range (num) :
-        #AI
+    #start AI
+    while len(work)<num:
         choice=(random.choice(random.choice(random.choice(totall))))
-        while choice in work:
+        while choice not in work:
             work.append(choice)
+    #end AI
     if reps=='E':
          work.append("Repeat each exercise 8-12 times per round")
     elif reps=='S':
@@ -156,4 +161,5 @@ def total (reps,num):
     for i in work:
         print(i)
     return work      
+
 main()
