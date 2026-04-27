@@ -1,5 +1,7 @@
 '''
 Workout Generator
+I completed this project alone with the help of ChatGPT for debugging 
+and refining my code, as indicated.
 '''
 import random
 
@@ -18,7 +20,8 @@ lowerl=[quads,hamstrings,glutes,calves]
 
 totall=[upperl,lowerl]
 
-corel=["Planks", "Dead Bugs", "Bird Dogs", "Russian Twists", "Leg Raises", "Glute Bridges", "Bicycle Crunches", "Cherry Pickers"]
+corel=["Planks", "Dead Bugs", "Bird Dogs", "Russian Twists", "Leg Raises", 
+       "Glute Bridges", "Bicycle Crunches", "Cherry Pickers"]
 
 
 workouts={
@@ -59,32 +62,36 @@ C: Core
 
 def create(wtype):
     if wtype == 'U':
-            reps=input("Would you like to do a strength workout (S) or an endurance workout (E)?").strip().upper()
-            num=int(input("How many exercises would you like to do? (Typically 4-8)"))
+            reps=input("Would you like to do a strength workout (S) or an endurance workout (E)? ").strip().upper()
+            num=int(input("How many exercises would you like to do? (Typically 4-8) "))
             #start AI
             work = upper(reps,num)
-            #end AI
+            #end AI - AI was used to debug code and make sure the output of the function was saved as 'work', ChatGPT
+            save= input ("Would you like to save your workout? (Y/N)").upper().strip()
     elif wtype == 'L':
-            reps=input("Would you like to do a strength workout (S) or an endurance workout (E)?").strip().upper()
-            num=int(input("How many exercises would you like to do? (Typically 4-8)"))
+            reps=input("Would you like to do a strength workout (S) or an endurance workout (E)? ").strip().upper()
+            num=int(input("How many exercises would you like to do? (Typically 4-8) "))
             #start AI
             work = lower(reps,num)
-            #end AI
+            #end AI - see line 69
+            save= input ("Would you like to save your workout? (Y/N)").upper().strip()
     elif wtype == 'T':
-            reps=input("Would you like to do a strength workout (S) or an endurance workout (E)?").strip().upper()
-            num=int(input("How many exercises would you like to do? (Typically 4-8)"))
+            reps=input("Would you like to do a strength workout (S) or an endurance workout (E)? ").strip().upper()
+            num=int(input("How many exercises would you like to do? (Typically 4-8) "))
             #start AI
             work = total(reps,num)
-            #end AI
+            #end AI - see line 69
+            save= input ("Would you like to save your workout? (Y/N)").upper().strip()
     elif wtype == 'C':
-            time=int(input("How long do you want your core workout to be? (Typically 5, 10, or 15): "))
-            reps=int(input("How many exercises would you like to do? Typically 4-8.)"))
+            time=int(input("How many minutes long do you want your core workout to be? (Typically 5, 10, or 15): "))
+            reps=int(input("How many exercises would you like to do? (Typically 4-8) "))
             #start AI
             work = core(time, reps)
-            #end AI
+            #end AI- see line 69
+            save= input ("Would you like to save your workout? (Y/N)").upper().strip()
     else:
-            print("Invalid input. Please try again.")
-    save= input ("Would you like to save your workout? (Y/N)").upper().strip()
+            print("No Valid Workout Input")
+            save = "N"
     if save == 'Y':
             name= input("What would you like to name this workout?")
             workouts [name]=work
@@ -92,6 +99,7 @@ def create(wtype):
             print("Workout not saved.")
             
 def display():
+    print()
     print("Displaying Workouts:")
     print()
    #start AI
@@ -100,15 +108,16 @@ def display():
         for k in j:
             print(f"{k}")
         print()
-    #end AI
+    #end AI-- this gave me a sleek way of displaying workouts using a nested for loop. from ChatGPT
 def core(time, reps):
     work=[]
     num=int(time/reps*2)
+    # this calculates the number of rounds based on time and number of exercises input
     for i in range (reps):
         work.append(random.choice(corel))
     #start AI
     work.append(f"Repeat all exercises for 30 seconds {num} time(s)")
-    #end AI
+    #end AI- ChatGPT helped with fstring
     if num>1:
         work.append("Rest for 30 seconds between each round")
     else:
@@ -120,12 +129,10 @@ def core(time, reps):
 
 def upper(reps, num):
     work=[]
-    #start AI
     while len(work)<num:
         choice=(random.choice(random.choice(upperl)))
-        while choice not in work:
+        if choice not in work:
             work.append(choice)
-    #end AI
     if  reps=='E':
          work.append("Repeat each exercise 8-12 times per round")
     elif reps=='S':
@@ -144,7 +151,7 @@ def lower(reps,num):
         choice = random.choice(random.choice(lowerl))
         if choice not in work:
             work.append(choice)
-    #end AI
+    #end AI - see line 137
     if reps=='E':
          work.append("Repeat each exercise 8-12 times per round")
     elif reps=='S':
@@ -161,9 +168,9 @@ def total (reps,num):
     #start AI
     while len(work)<num:
         choice=(random.choice(random.choice(random.choice(totall))))
-        while choice not in work:
+        if choice not in work:
             work.append(choice)
-    #end AI
+    #end AI - see line 137
     if reps=='E':
          work.append("Repeat each exercise 8-12 times per round")
     elif reps=='S':
